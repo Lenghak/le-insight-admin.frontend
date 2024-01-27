@@ -1,0 +1,16 @@
+#usr/bin/bash
+
+echo "! - Checking Lint"
+pnpm run lint
+echo "✔ - Done Running Lint"
+
+echo "! - Prettier is Formatting Staged Files"
+pnpm lint-staged
+
+echo "! - Formatted" ${staged}
+echo "✔ - Done Running Prettier\n"
+
+echo "! - Checking for Circlar Dependency"
+pnpm cruise || exit $
+
+echo "✔ - Done Running Pre-commit\n"

@@ -13,6 +13,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: "./tsconfig.json",
   },
   env: {
     browser: true,
@@ -21,7 +22,12 @@ module.exports = {
   },
 
   // Base config
-  extends: ["eslint:recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "prettier",
+  ],
 
   overrides: [
     // React
@@ -55,7 +61,7 @@ module.exports = {
       plugins: ["@typescript-eslint", "import"],
       parser: "@typescript-eslint/parser",
       settings: {
-        "import/internal-regex": "^~/",
+        "import/internal-regex": "^@/",
         "import/resolver": {
           node: {
             extensions: [".ts", ".tsx"],
@@ -80,4 +86,25 @@ module.exports = {
       },
     },
   ],
+
+  parser: "@typescript-eslint/parser",
+
+  rules: {
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        prefer: "type-imports",
+        fixStyle: "inline-type-imports",
+      },
+    ],
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
+  },
 };

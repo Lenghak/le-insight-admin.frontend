@@ -1,0 +1,5 @@
+#usr/bin/bash
+
+echo "! - Installing New Dependencies"
+pnpm i
+echo "✔ - Done Running Post-Merge"

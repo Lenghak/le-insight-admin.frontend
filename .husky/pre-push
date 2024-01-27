@@ -1,0 +1,11 @@
+#usr/bin/bash
+
+echo "! - Pulling from main"
+// git pull origin main
+echo "✔ - Done update remote"
+
+echo "! - Testing Build Bundle"
+pnpm run build
+echo "✔ - Done Running Build"
+
+echo "✔ - Done Running Pre-Push\n"

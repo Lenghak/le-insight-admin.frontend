@@ -1,5 +1,16 @@
 import type { MetaFunction } from "@remix-run/node";
 
+import { Button } from "@/common/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/common/components/ui/dropdown-menu";
+
+import { MoonIcon, SunIcon } from "lucide-react";
+import { Theme, useTheme } from "remix-themes";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -8,34 +19,29 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [, setTheme] = useTheme();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
+    <main>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
           >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={() => setTheme(Theme.LIGHT)}>
+            Light
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme(Theme.DARK)}>
+            Dark
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </main>
   );
 }
