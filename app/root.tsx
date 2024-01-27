@@ -22,8 +22,8 @@ import {
 
 import ErrorPage from "./common/components/error/erorr.page";
 import { cn } from "./common/lib/utils";
-import { themeSessionResolver } from "./session.server";
 import styles from "./styles/globals.css";
+import { themeSessionResolver } from "./theme.server";
 
 export const meta: MetaFunction = () => {
   return [

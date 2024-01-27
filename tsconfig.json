@@ -4,7 +4,8 @@
     ".eslintrc.cjs",
     "*.config.js",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "app/routes/action.set-theme.tsx"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

@@ -5,6 +5,8 @@ export const env = createEnv({
   server: {
     HOSTNAME: z.string().min(1),
     COOKIE_SECRET: z.string().min(1),
+
+    NODE_ENV: z.enum(["production", "development", "preview", "stage"]),
   },
 
   /**
