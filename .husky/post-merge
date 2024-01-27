@@ -1,4 +1,4 @@
-#usr/bin/bash
+#!usr/bin/bash | sh
 
 echo "! - Installing New Dependencies"
 pnpm i
