@@ -1,7 +1,5 @@
-#!usr/bin/bash | sh
-
 echo "! - Pulling from main"
-// git pull origin main
+git pull origin master
 echo "✔ - Done update remote"
 
 echo "! - Testing Build Bundle"
