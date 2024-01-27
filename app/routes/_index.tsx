@@ -1,5 +1,3 @@
-import type { MetaFunction } from "@remix-run/node";
-
 import { Button } from "@/common/components/ui/button";
 import {
   DropdownMenu,
@@ -11,17 +9,10 @@ import {
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Theme, useTheme } from "remix-themes";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
-
 export default function Index() {
   const [, setTheme] = useTheme();
   return (
-    <main>
+    <main className="3xl:container">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
