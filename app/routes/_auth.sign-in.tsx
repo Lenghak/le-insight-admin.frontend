@@ -57,7 +57,7 @@ export default function SignIn() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((values) => console.log(values))}
-          className="w-full space-y-2"
+          className="w-full space-y-4"
         >
           <FormField
             control={form.control}

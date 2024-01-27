@@ -24,14 +24,19 @@ export const meta: MetaFunction = () => {
   return [{ title: "Authentication | Reset Password" }];
 };
 
-const ResetPasswordFormSchema = z.object({
-  newPassword: z.string().min(8, {
-    message: "Enter a new passowrd",
-  }),
-  confirmPassword: z.string().min(8, {
-    message: "Enter at least 8 characters password",
-  }),
-});
+const ResetPasswordFormSchema = z
+  .object({
+    newPassword: z.string().min(8, {
+      message: "Enter a new passowrd",
+    }),
+    confirmPassword: z.string().min(8, {
+      message: "Enter at least 8 characters password",
+    }),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"], // path of error
+  });
 
 export default function ResetPassword() {
   const form = useForm<z.infer<typeof ResetPasswordFormSchema>>({
@@ -57,7 +62,7 @@ export default function ResetPassword() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((values) => console.log(values))}
-          className="w-full space-y-2"
+          className="flex w-full flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -133,7 +138,7 @@ export default function ResetPassword() {
             type="submit"
             className="w-full font-bold"
           >
-            Sign In
+            Reset Password
           </Button>
         </form>
       </Form>
