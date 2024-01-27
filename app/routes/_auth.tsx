@@ -1,12 +1,13 @@
 import { Link, Outlet, useLocation } from "@remix-run/react";
 
+import ThemeChanger from "@/common/components/theme-changer";
 import { buttonVariants } from "@/common/components/ui/button";
 import { Muted } from "@/common/components/ui/muted";
 import { Separator } from "@/common/components/ui/separator";
 
 import { cn } from "@/common/lib/utils";
 
-import { DotIcon } from "lucide-react";
+import { ChevronLeftIcon, DotIcon } from "lucide-react";
 
 export default function AuthLayout() {
   const location = useLocation();
@@ -20,12 +21,15 @@ export default function AuthLayout() {
             buttonVariants({
               variant: "link",
             }),
-            "absolute right-8 top-8 items-center gap-4 font-bold",
+            "absolute left-0 top-8 items-center gap-4 font-bold",
             location.pathname === "/sign-in" ? "hidden" : "",
           )}
         >
+          <ChevronLeftIcon size={18} />
           <span>Sign In</span>
         </Link>
+
+        <ThemeChanger className="absolute right-8 top-8" />
 
         <Outlet />
 

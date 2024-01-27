@@ -136,7 +136,7 @@ export default function ResetPassword() {
 
           <Button
             type="submit"
-            className="w-full font-bold"
+            className="w-full rounded-md font-bold"
           >
             Reset Password
           </Button>

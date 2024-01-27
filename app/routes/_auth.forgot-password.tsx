@@ -69,7 +69,7 @@ export default function ForgotPassword() {
 
           <Button
             type="submit"
-            className="w-full font-bold"
+            className="w-full rounded-md font-bold"
           >
             Send Link to Email
           </Button>

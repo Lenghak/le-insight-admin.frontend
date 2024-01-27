@@ -126,7 +126,7 @@ export default function SignIn() {
 
           <Button
             type="submit"
-            className="w-full font-bold"
+            className="w-full rounded-md font-bold"
           >
             Sign In
           </Button>
