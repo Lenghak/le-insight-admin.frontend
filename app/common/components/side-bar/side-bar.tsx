@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react";
+
 import { cn } from "@/common/lib/utils";
 
 import {
@@ -14,6 +16,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 
+import { Separator } from "../ui/separator";
 import { SideNav } from "./side-nav";
 
 export default function SideBar({
@@ -25,53 +28,65 @@ export default function SideBar({
 }) {
   return (
     <div className={cn(className)}>
-      <div
+      <Link
+        to={"/dashboard"}
         className={cn(
-          "flex h-14 items-center justify-center",
-          isCollapsed ? "h-14" : "px-2",
+          "flex h-16 items-center justify-center",
+          isCollapsed ? "h-16 px-2" : "md:justify-between md:px-4",
         )}
       >
-        {/* Logo */}
-      </div>
+        <img
+          src="/svg/favicon.svg"
+          alt="Logo"
+          className="h-10 w-10"
+        />
+      </Link>
+
+      <Separator className="h-[0.03rem]" />
 
       <SideNav
         isCollapsed={isCollapsed}
         links={[
           {
             title: "Dashboard",
+            link: "/dashboard",
             icon: LayoutDashboardIcon,
             variant: "default",
           },
           {
             title: "Activity",
             icon: ActivityIcon,
+            link: "/activity",
             variant: "ghost",
           },
           {
             title: "Users",
-            label: "9",
             icon: UsersIcon,
+            link: "/users",
             variant: "ghost",
           },
           {
             title: "Articles",
             icon: FileJsonIcon,
+            link: "/articles",
             variant: "ghost",
           },
           {
             title: "Archive",
-            label: "",
             icon: ArchiveIcon,
+            link: "/archives",
             variant: "ghost",
           },
           {
             title: "Trash",
-            label: "",
             icon: Trash2Icon,
+            link: "/trash",
             variant: "ghost",
           },
         ]}
       />
+
+      <Separator className="h-[0.03rem]" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -79,21 +94,25 @@ export default function SideBar({
           {
             title: "Reports",
             icon: FilesIcon,
+            link: "/reports",
             variant: "ghost",
           },
           {
             title: "Notifications",
             icon: BellDotIcon,
+            link: "/notifications",
             variant: "ghost",
           },
           {
             title: "Updates",
-            label: "342",
             icon: AlertCircleIcon,
+            link: "/updates",
             variant: "ghost",
           },
         ]}
       />
+
+      <Separator className="h-[0.03rem]" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -101,11 +120,13 @@ export default function SideBar({
           {
             title: "Settings",
             icon: SettingsIcon,
+            link: "/settings",
             variant: "ghost",
           },
           {
-            title: "Log Out",
+            title: "Sign Out",
             icon: LogOutIcon,
+            link: "/sign-out",
             variant: "ghost",
           },
         ]}
