@@ -27,7 +27,7 @@ import { themeSessionResolver } from "./theme.server";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Le-Insight Admin" },
+    { title: "Le-Insight | Admin" },
     {
       name: "description",
       content:

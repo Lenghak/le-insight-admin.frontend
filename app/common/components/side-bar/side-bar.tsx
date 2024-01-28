@@ -42,7 +42,7 @@ export default function SideBar({
         />
       </Link>
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -56,37 +56,37 @@ export default function SideBar({
           {
             title: "Activity",
             icon: ActivityIcon,
-            link: "/activity",
+            link: "/dashboard/activity",
             variant: "ghost",
           },
           {
             title: "Users",
             icon: UsersIcon,
-            link: "/users",
+            link: "/dashboard/users",
             variant: "ghost",
           },
           {
             title: "Articles",
             icon: FileJsonIcon,
-            link: "/articles",
+            link: "/dashboard/articles",
             variant: "ghost",
           },
           {
             title: "Archive",
             icon: ArchiveIcon,
-            link: "/archives",
+            link: "/dashboard/archives",
             variant: "ghost",
           },
           {
             title: "Trash",
             icon: Trash2Icon,
-            link: "/trash",
+            link: "/dashboard/trash",
             variant: "ghost",
           },
         ]}
       />
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -94,25 +94,25 @@ export default function SideBar({
           {
             title: "Reports",
             icon: FilesIcon,
-            link: "/reports",
+            link: "/dashboard/reports",
             variant: "ghost",
           },
           {
             title: "Notifications",
             icon: BellDotIcon,
-            link: "/notifications",
+            link: "/dashboard/notifications",
             variant: "ghost",
           },
           {
             title: "Updates",
             icon: AlertCircleIcon,
-            link: "/updates",
+            link: "/dashboard/updates",
             variant: "ghost",
           },
         ]}
       />
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -120,7 +120,7 @@ export default function SideBar({
           {
             title: "Settings",
             icon: SettingsIcon,
-            link: "/settings",
+            link: "/dashboard/settings",
             variant: "ghost",
           },
           {

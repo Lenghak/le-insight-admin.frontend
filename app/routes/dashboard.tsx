@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { Outlet } from "@remix-run/react";
 
+import { DashboardHeader } from "@/common/components/header";
 import { SideBar } from "@/common/components/side-bar";
 import { Button } from "@/common/components/ui/button";
-import { Separator } from "@/common/components/ui/separator";
 import { TooltipProvider } from "@/common/components/ui/tooltip";
 
 import { cn } from "@/common/lib/utils";
@@ -16,7 +16,7 @@ export default function DashboardLayout() {
 
   return (
     <TooltipProvider delayDuration={0}>
-      <main className="grid grid-cols-[auto,_auto,_1fr] grid-rows-1">
+      <main className="grid h-full grid-cols-[auto,_1fr] grid-rows-1 bg-card">
         <div
           className={cn(
             "relative w-16 bg-card transition-all ease-in-out md:w-56",
@@ -29,11 +29,11 @@ export default function DashboardLayout() {
           />
 
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
             aria-label="Side-bar toggle"
             onClick={() => setCollapsed(!isCollapsed)}
-            className="absolute -right-5 top-10 bg-card transition-all max-md:h-0 max-md:w-0"
+            className="absolute -right-4 bottom-4 bg-background transition-all max-md:h-0 max-md:w-0"
           >
             {isCollapsed ? (
               <SidebarCloseIcon className="h-4 w-4" />
@@ -43,9 +43,9 @@ export default function DashboardLayout() {
           </Button>
         </div>
 
-        <Separator className="h-dvh w-[0.031rem]" />
+        <section>
+          <DashboardHeader />
 
-        <section className="rounded-s-lg">
           <Outlet />
         </section>
       </main>
