@@ -9,10 +9,11 @@ import {
   BellDotIcon,
   FileJsonIcon,
   FilesIcon,
-  LayoutDashboardIcon,
-  LogOutIcon,
-  SettingsIcon,
-  Trash2Icon,
+  HandCoinsIcon,
+  Layers3Icon,
+  PieChartIcon,
+  ScrollIcon,
+  SwatchBookIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -50,11 +51,11 @@ export default function SideBar({
           {
             title: "Dashboard",
             link: "/dashboard",
-            icon: LayoutDashboardIcon,
+            icon: PieChartIcon,
             variant: "default",
           },
           {
-            title: "Activity",
+            title: "Activities",
             icon: ActivityIcon,
             link: "/dashboard/activity",
             variant: "ghost",
@@ -72,15 +73,15 @@ export default function SideBar({
             variant: "ghost",
           },
           {
-            title: "Archive",
-            icon: ArchiveIcon,
-            link: "/dashboard/archives",
+            title: "Categories",
+            icon: SwatchBookIcon,
+            link: "/dashboard/categories",
             variant: "ghost",
           },
           {
-            title: "Trash",
-            icon: Trash2Icon,
-            link: "/dashboard/trash",
+            title: "Archives",
+            icon: ArchiveIcon,
+            link: "/dashboard/archives",
             variant: "ghost",
           },
         ]}
@@ -118,15 +119,21 @@ export default function SideBar({
         isCollapsed={isCollapsed}
         links={[
           {
-            title: "Settings",
-            icon: SettingsIcon,
-            link: "/dashboard/settings",
+            title: "Infrastructures",
+            icon: Layers3Icon,
+            link: "/dashboard/infra",
             variant: "ghost",
           },
           {
-            title: "Sign Out",
-            icon: LogOutIcon,
-            link: "/sign-out",
+            title: "Documents",
+            icon: ScrollIcon,
+            link: "/docs",
+            variant: "ghost",
+          },
+          {
+            title: "Partnerships",
+            icon: HandCoinsIcon,
+            link: "/partners",
             variant: "ghost",
           },
         ]}

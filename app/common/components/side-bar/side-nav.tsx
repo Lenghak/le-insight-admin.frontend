@@ -49,7 +49,7 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                     }),
                     "h-10 w-10",
                     link.variant === "default" &&
-                      " dark:bg-secondary dark:text-secondary-foreground",
+                      "dark:bg-secondary dark:text-secondary-foreground",
                   )}
                 >
                   <link.icon className="h-4 w-4" />
@@ -78,8 +78,9 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                   size: isCollapsed ? "icon" : "default",
                 }),
                 link.variant === "default" &&
-                  "font-bold dark:bg-secondary dark:text-secondary-foreground",
+                  "font-bold dark:text-secondary-foreground ",
                 "gap-3 px-2 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
+                isCollapsed ? "rounded-full" : "md:rounded-md",
               )}
             >
               <link.icon className={"h-4 w-4"} />

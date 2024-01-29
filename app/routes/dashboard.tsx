@@ -37,7 +37,7 @@ export default function DashboardLayout() {
                 size="icon"
                 aria-label="Side-bar toggle"
                 onClick={() => setCollapsed(!isCollapsed)}
-                className="min-h-10 min-w-10 transition-all max-md:h-0 max-md:w-0"
+                className="min-h-10 min-w-10 overflow-hidden transition-all max-md:h-0 max-md:min-h-0 max-md:w-0 max-md:min-w-0"
               >
                 <MenuIcon className="h-4 w-4" />
               </Button>
