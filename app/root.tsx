@@ -13,7 +13,6 @@ import {
   useRouteError,
 } from "@remix-run/react";
 
-import { useLockBodyScroll } from "@uidotdev/usehooks";
 import { HttpStatusCode } from "axios";
 import {
   PreventFlashOnWrongTheme,
@@ -80,10 +79,7 @@ export default function ThemedApp() {
 
 export function App() {
   const data = useLoaderData<typeof loader>();
-
   const [theme] = useTheme();
-
-  useLockBodyScroll();
 
   return (
     <html
