@@ -17,7 +17,7 @@ interface SideNavProps {
     title: string;
     label?: string;
     icon: LucideIcon;
-    variant: "default" | "ghost";
+    variant: "secondary" | "ghost";
     link: string;
   }[];
 }
@@ -32,7 +32,8 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
     >
       <nav className="grid gap-2 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 max-md:justify-center">
         {links.map((link, index) => {
-          link.variant = location.pathname === link.link ? "default" : "ghost";
+          link.variant =
+            location.pathname === link.link ? "secondary" : "ghost";
 
           return isCollapsed ? (
             <Tooltip
@@ -48,11 +49,16 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                       size: isCollapsed ? "icon" : "default",
                     }),
                     "h-10 w-10",
-                    link.variant === "default" &&
+                    link.variant === "secondary" &&
                       "dark:bg-secondary dark:text-secondary-foreground",
                   )}
                 >
-                  <link.icon className="h-4 w-4" />
+                  <link.icon
+                    className={cn(
+                      "h-4 w-4",
+                      link.variant === "secondary" && "stroke-[3]",
+                    )}
+                  />
                   <span className="sr-only">{link.title}</span>
                 </Link>
               </TooltipTrigger>
@@ -77,13 +83,17 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                   variant: link.variant,
                   size: isCollapsed ? "icon" : "default",
                 }),
-                link.variant === "default" &&
-                  "font-bold dark:text-secondary-foreground ",
+                link.variant === "secondary" &&
+                  "font-bold dark:text-secondary-foreground",
                 "gap-3 px-2 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
-                isCollapsed ? "rounded-full" : "md:rounded-md",
               )}
             >
-              <link.icon className={"h-4 w-4"} />
+              <link.icon
+                className={cn(
+                  "h-4 w-4",
+                  link.variant === "secondary" && "stroke-[3]",
+                )}
+              />
               <span className={"max-md:hidden"}>{link.title}</span>
             </Link>
           );

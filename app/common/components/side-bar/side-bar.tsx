@@ -52,13 +52,7 @@ export default function SideBar({
             title: "Dashboard",
             link: "/dashboard",
             icon: PieChartIcon,
-            variant: "default",
-          },
-          {
-            title: "Activities",
-            icon: ActivityIcon,
-            link: "/dashboard/activity",
-            variant: "ghost",
+            variant: "secondary",
           },
           {
             title: "Users",
@@ -76,6 +70,12 @@ export default function SideBar({
             title: "Categories",
             icon: SwatchBookIcon,
             link: "/dashboard/categories",
+            variant: "ghost",
+          },
+          {
+            title: "Activities",
+            icon: ActivityIcon,
+            link: "/dashboard/activity",
             variant: "ghost",
           },
           {

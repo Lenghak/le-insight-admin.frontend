@@ -71,7 +71,7 @@ export default function SignIn() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className="font-semibold italic" />
+                <FormMessage className="ml-4 list-item text-xs font-semibold" />
               </FormItem>
             )}
           />
@@ -104,7 +104,7 @@ export default function SignIn() {
                     </Button>
                   </div>
                 </FormControl>
-                <FormMessage className="font-semibold italic" />
+                <FormMessage className="ml-4 list-item text-xs font-semibold" />
               </FormItem>
             )}
           />
