@@ -73,7 +73,7 @@ export default function SideBar({
           {
             title: "Activities",
             icon: ActivityIcon,
-            link: "/dashboard/activity",
+            link: "/dashboard/activities",
             variant: "ghost",
           },
           {

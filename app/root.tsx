@@ -52,14 +52,14 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "icon",
-    href: "svg/logo-light.svg",
+    href: "/svg/logo-light.svg",
     media: "(prefers-color-scheme: light)",
     sizes: "any",
     type: "image/svg+xml",
   },
   {
     rel: "icon",
-    href: "svg/logo-dark.svg",
+    href: "/svg/logo-dark.svg",
     media: "(prefers-color-scheme: dark)",
     sizes: "any",
     type: "image/svg+xml",

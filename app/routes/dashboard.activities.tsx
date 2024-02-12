@@ -1,9 +1,9 @@
 import { type MetaFunction } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
-  return [{ title: "Dashboard | Logs" }];
+  return [{ title: "Dashboard | Activities" }];
 };
 
-export default function Logs() {
+export default function Activities() {
   return "Dashboard";
 }

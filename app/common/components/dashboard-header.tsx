@@ -3,8 +3,8 @@ import { Input } from "@/common/components/ui/input";
 
 import { SearchIcon } from "lucide-react";
 
-import { ProfileDropdown } from "../profile-dropdown";
-import { Separator } from "../ui/separator";
+import { ProfileDropdown } from "./profile-dropdown";
+import { Separator } from "./ui/separator";
 
 type DashboardHeaderProps = {
   sidebarToggleButton: React.ReactNode;

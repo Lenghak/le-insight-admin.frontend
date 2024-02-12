@@ -1,45 +1,56 @@
+import { columns } from "@/modules/users/components/users-columns";
+import { UsersDataForm } from "@/modules/users/components/users-data-form";
+import UsersTable from "@/modules/users/components/users-table";
+
 import DashboardTitle from "@/common/components/dashboard-title";
+import { Button } from "@/common/components/ui/button";
+
+export async function loader() {
+  return [
+    {
+      title: "Total Users",
+      value: 99,
+      analytics: "+20.1% from last month",
+    },
+    {
+      title: "New Users",
+      value: 53,
+      analytics: "+24 since last hour",
+    },
+    {
+      title: "Banned Users",
+      value: 12,
+      analytics: "+2.1% from last month",
+    },
+    {
+      title: "Active Now",
+      value: 53,
+      analytics: "+24 since last hour",
+    },
+  ];
+}
 
 export default function Users() {
   return (
-    <section className="h-full w-full space-y-6 rounded-xl bg-background p-6">
+    <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
       {/* Titles & Breadcrumps */}
-      <div className="flex w-full flex-row">
+      <div className="flex w-full flex-row items-center justify-between">
         <DashboardTitle
           title="Users"
           description="Manage user accounts and permissions."
         />
+
+        <div className="flex w-fit flex-row gap-4">
+          <UsersDataForm />
+          <Button>Download</Button>
+        </div>
       </div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-3 grid-rows-1 gap-6"></div>
-
       {/* Tables */}
-      {/* <UsersTable
+      <UsersTable
         columns={columns}
-        data={
-          [
-            {
-              id: "728ed52f",
-              amount: 100,
-              status: "pending",
-              email: "m@example.com",
-            },
-            {
-              id: "728ed52f",
-              amount: 100,
-              status: "pending",
-              email: "m@example.com",
-            },
-            {
-              id: "489e1d42",
-              amount: 125,
-              status: "processing",
-              email: "example@gmail.com",
-            },
-          ] as Payment[]
-        }
-      /> */}
+        data={[]}
+      />
     </section>
   );
 }

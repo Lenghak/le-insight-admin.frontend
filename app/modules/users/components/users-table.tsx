@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { Card } from "@/common/components/ui/card";
 import {
   Table,
   TableBody,
@@ -23,6 +22,7 @@ import {
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  className?: string;
 }
 
 export default function UsersTable<TData, TValue>({
@@ -47,8 +47,8 @@ export default function UsersTable<TData, TValue>({
   });
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-md border bg-card">
+    <div className="h-full space-y-6">
+      <div className="h-1/2 rounded-md border bg-card">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -76,7 +76,10 @@ export default function UsersTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell
+                      key={cell.id}
+                      className="py-3"
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
@@ -98,16 +101,6 @@ export default function UsersTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-
-      <Card className="flex w-full flex-row items-center justify-between rounded-lg p-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          <strong>{table.getFilteredSelectedRowModel().rows.length}</strong> of{" "}
-          <strong>{table.getFilteredRowModel().rows.length}</strong> row(s)
-          selected
-        </div>
-
-        <div className="flex items-center"></div>
-      </Card>
     </div>
   );
 }

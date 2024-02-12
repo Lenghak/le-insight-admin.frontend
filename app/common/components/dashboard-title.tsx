@@ -16,7 +16,7 @@ export default function DashboardTitle({
   return (
     <div className={cn("flex flex-col", className)}>
       <H3 className="font-extrabold">{title}</H3>
-      <Muted className="font-semibold">{description}</Muted>
+      <Muted className="font-medium">{description}</Muted>
     </div>
   );
 }

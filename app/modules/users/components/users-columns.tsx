@@ -16,9 +16,14 @@ import { ArrowUpDownIcon, MoreHorizontalIcon } from "lucide-react";
 // You can use a Zod schema here if you want.
 export type Payment = {
   id: string;
-  amount: number;
+  name: number;
   status: "pending" | "processing" | "success" | "failed";
   email: string;
+  created_at: Date;
+  updated_at: Date;
+  invited_at: Date;
+  deleted_at: Date;
+  banned_until: Date;
 };
 
 export const columns: ColumnDef<Payment>[] = [
@@ -43,6 +48,10 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
+    accessorKey: "Name",
+    header: "Name",
+  },
+  {
     accessorKey: "status",
     header: "Status",
   },
@@ -61,8 +70,24 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "role",
+    header: "Role",
+  },
+  {
+    accessorKey: "created_at",
+    header: "Created at",
+  },
+  {
+    accessorKey: "updated_at",
+    header: "Updated at",
+  },
+  {
+    accessorKey: "invited_at",
+    header: "Invited at",
+  },
+  {
+    accessorKey: "banned_until",
+    header: "Banned until",
   },
   {
     id: "actions",
