@@ -1,3 +1,5 @@
+import { useLoaderData } from "@remix-run/react";
+
 import { columns } from "@/modules/users/components/users-columns";
 import { UsersDataForm } from "@/modules/users/components/users-data-form";
 import UsersTable from "@/modules/users/components/users-table";
@@ -5,32 +7,28 @@ import UsersTable from "@/modules/users/components/users-table";
 import DashboardTitle from "@/common/components/dashboard-title";
 import { Button } from "@/common/components/ui/button";
 
+import { getQueryClient } from "@/common/lib/query";
+
+import getUsersList from "@/common/api/users/axios/get-users-list";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+
 export async function loader() {
-  return [
-    {
-      title: "Total Users",
-      value: 99,
-      analytics: "+20.1% from last month",
-    },
-    {
-      title: "New Users",
-      value: 53,
-      analytics: "+24 since last hour",
-    },
-    {
-      title: "Banned Users",
-      value: 12,
-      analytics: "+2.1% from last month",
-    },
-    {
-      title: "Active Now",
-      value: 53,
-      analytics: "+24 since last hour",
-    },
-  ];
+  const queryClient = getQueryClient();
+
+  await queryClient.fetchQuery({
+    queryKey: ["users"],
+    queryFn: async () => await getUsersList(),
+  });
+
+  return {
+    dehydratedState: dehydrate(queryClient),
+  };
 }
 
 export default function Users() {
+  const { dehydratedState } = useLoaderData<typeof loader>();
+  console.log(dehydratedState);
+
   return (
     <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
       {/* Titles & Breadcrumps */}
@@ -42,15 +40,19 @@ export default function Users() {
 
         <div className="flex w-fit flex-row gap-4">
           <UsersDataForm />
-          <Button>Download</Button>
+          <Button>
+            <span className="font-bold">Download</span>
+          </Button>
         </div>
       </div>
 
       {/* Tables */}
-      <UsersTable
-        columns={columns}
-        data={[]}
-      />
+      <HydrationBoundary state={dehydratedState}>
+        <UsersTable
+          columns={columns}
+          data={[]}
+        />
+      </HydrationBoundary>
     </section>
   );
 }
