@@ -1,5 +1,3 @@
-import { useLoaderData } from "@remix-run/react";
-
 import { columns } from "@/modules/users/components/users-columns";
 import { UsersDataForm } from "@/modules/users/components/users-data-form";
 import UsersTable from "@/modules/users/components/users-table";
@@ -7,26 +5,12 @@ import UsersTable from "@/modules/users/components/users-table";
 import DashboardTitle from "@/common/components/dashboard-title";
 import { Button } from "@/common/components/ui/button";
 
-import { getQueryClient } from "@/common/lib/query";
-
-import getUsersList from "@/common/api/users/axios/get-users-list";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-
-export async function loader() {
-  const queryClient = getQueryClient();
-
-  await queryClient.fetchQuery({
-    queryKey: ["users"],
-    queryFn: async () => await getUsersList(),
-  });
-
-  return {
-    dehydratedState: dehydrate(queryClient),
-  };
-}
+import useGetUsers from "@/common/api/users/query/use-get-users";
 
 export default function Users() {
-  const { dehydratedState } = useLoaderData<typeof loader>();
+  const { data } = useGetUsers();
+
+  console.log(data);
 
   return (
     <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
@@ -46,12 +30,11 @@ export default function Users() {
       </div>
 
       {/* Tables */}
-      <HydrationBoundary state={dehydratedState}>
-        <UsersTable
-          columns={columns}
-          data={[]}
-        />
-      </HydrationBoundary>
+
+      <UsersTable
+        columns={columns}
+        data={[]}
+      />
     </section>
   );
 }

@@ -14,7 +14,7 @@ import { ArrowUpDownIcon, MoreHorizontalIcon } from "lucide-react";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
+export type Users = {
   id: string;
   name: number;
   status: "pending" | "processing" | "success" | "failed";
@@ -26,7 +26,7 @@ export type Payment = {
   banned_until: Date;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Users>[] = [
   {
     id: "select",
     header: ({ table }) => (
