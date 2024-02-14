@@ -8,6 +8,12 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.50.1)
+  '@nanostores/persistent':
+    specifier: github:nanostores/persistent
+    version: github.com/nanostores/persistent/09318417888970ffe1cecb3aeb65354fb30ab2db(nanostores@0.9.5)
+  '@nanostores/react':
+    specifier: github:nanostores/react
+    version: github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059(nanostores@0.9.5)(react@18.2.0)
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
     version: 1.1.2(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
@@ -134,6 +140,9 @@ dependencies:
   lucide-react:
     specifier: ^0.316.0
     version: 0.316.0(react@18.2.0)
+  nanostores:
+    specifier: ^0.9.5
+    version: 0.9.5
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
@@ -3380,7 +3389,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.9)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.4
       '@vanilla-extract/css': 1.14.1
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
@@ -6665,6 +6674,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanostores@0.9.5:
+    resolution: {integrity: sha512-Z+p+g8E7yzaWwOe5gEUB2Ox0rCEeXWYIZWmYvw/ajNYX8DlXdMvMDj8DWfM/subqPAcsf8l8Td4iAwO1DeIIRQ==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    dev: false
+
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -8901,3 +8915,29 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
+
+  github.com/nanostores/persistent/09318417888970ffe1cecb3aeb65354fb30ab2db(nanostores@0.9.5):
+    resolution: {tarball: https://codeload.github.com/nanostores/persistent/tar.gz/09318417888970ffe1cecb3aeb65354fb30ab2db}
+    id: github.com/nanostores/persistent/09318417888970ffe1cecb3aeb65354fb30ab2db
+    name: '@nanostores/persistent'
+    version: 0.9.1
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0
+    dependencies:
+      nanostores: 0.9.5
+    dev: false
+
+  github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059(nanostores@0.9.5)(react@18.2.0):
+    resolution: {tarball: https://codeload.github.com/nanostores/react/tar.gz/b71b8427c9ec9c780083544505495ce7b36b7059}
+    id: github.com/nanostores/react/b71b8427c9ec9c780083544505495ce7b36b7059
+    name: '@nanostores/react'
+    version: 0.7.1
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0
+      react: '>=18.0.0'
+    dependencies:
+      nanostores: 0.9.5
+      react: 18.2.0
+    dev: false

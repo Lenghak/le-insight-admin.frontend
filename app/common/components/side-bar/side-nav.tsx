@@ -30,7 +30,7 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
       data-collapsed={isCollapsed}
       className="group flex flex-col gap-4 py-4 data-[collapsed=true]:py-4"
     >
-      <nav className="grid gap-2 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 max-md:justify-center">
+      <nav className="grid gap-3 px-4 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-4 max-md:justify-center">
         {links.map((link, index) => {
           link.variant =
             location.pathname === link.link ? "secondary" : "ghost";
@@ -85,7 +85,7 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                 }),
                 link.variant === "secondary" &&
                   "font-bold dark:text-secondary-foreground",
-                "gap-3 px-2 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
+                "gap-4 px-4 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
               )}
             >
               <link.icon

@@ -5,5 +5,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Activities() {
-  return "Dashboard";
+  return (
+    <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6"></section>
+  );
 }

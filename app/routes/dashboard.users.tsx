@@ -27,7 +27,6 @@ export async function loader() {
 
 export default function Users() {
   const { dehydratedState } = useLoaderData<typeof loader>();
-  console.log(dehydratedState);
 
   return (
     <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
