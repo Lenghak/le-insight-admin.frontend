@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 
 import { buttonVariants } from "@/common/components/ui/button";
 import {
@@ -17,20 +17,25 @@ interface SideNavProps {
     title: string;
     label?: string;
     icon: LucideIcon;
-    variant: "default" | "ghost";
+    variant: "secondary" | "ghost";
     link: string;
   }[];
 }
 
 export function SideNav({ links, isCollapsed }: SideNavProps) {
+  const location = useLocation();
+
   return (
     <div
       data-collapsed={isCollapsed}
       className="group flex flex-col gap-4 py-4 data-[collapsed=true]:py-4"
     >
-      <nav className="grid gap-2 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2 max-md:justify-center">
-        {links.map((link, index) =>
-          isCollapsed ? (
+      <nav className="grid gap-3 px-4 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-4 max-md:justify-center">
+        {links.map((link, index) => {
+          link.variant =
+            location.pathname === link.link ? "secondary" : "ghost";
+
+          return isCollapsed ? (
             <Tooltip
               key={index}
               delayDuration={0}
@@ -44,11 +49,16 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                       size: isCollapsed ? "icon" : "default",
                     }),
                     "h-10 w-10",
-                    link.variant === "default" &&
-                      "rounded-md dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
+                    link.variant === "secondary" &&
+                      "dark:bg-secondary dark:text-secondary-foreground",
                   )}
                 >
-                  <link.icon className="h-4 w-4" />
+                  <link.icon
+                    className={cn(
+                      "h-4 w-4",
+                      link.variant === "secondary" && "stroke-[3]",
+                    )}
+                  />
                   <span className="sr-only">{link.title}</span>
                 </Link>
               </TooltipTrigger>
@@ -73,40 +83,21 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                   variant: link.variant,
                   size: isCollapsed ? "icon" : "default",
                 }),
-                link.variant === "default" &&
-                  "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                "gap-3 rounded-md px-2 max-md:h-10 max-md:w-10 md:justify-start md:px-4",
+                link.variant === "secondary" &&
+                  "font-bold dark:text-secondary-foreground",
+                "gap-4 px-4 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
               )}
             >
               <link.icon
                 className={cn(
-                  "h-4 w-4 text-foreground",
-                  link.variant === "default" && "text-primary-foreground",
+                  "h-4 w-4",
+                  link.variant === "secondary" && "stroke-[3]",
                 )}
               />
-              <span
-                className={cn(
-                  "font-semibold text-foreground delay-1000 max-md:hidden",
-                  link.variant === "default" &&
-                    "font-bold text-primary-foreground",
-                )}
-              >
-                {link.title}
-              </span>
-              {/* {link.label && (
-                <span
-                  className={cn(
-                    "ml-auto",
-                    link.variant === "default" &&
-                      "text-background dark:text-white",
-                  )}
-                >
-                  {link.label}
-                </span>
-              )} */}
+              <span className={"max-md:hidden"}>{link.title}</span>
             </Link>
-          ),
-        )}
+          );
+        })}
       </nav>
     </div>
   );

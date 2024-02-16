@@ -1,5 +1,8 @@
 import { Link } from "@remix-run/react";
 
+import Logo from "@/common/components/logo";
+import { Separator } from "@/common/components/ui/separator";
+
 import { cn } from "@/common/lib/utils";
 
 import {
@@ -9,14 +12,14 @@ import {
   BellDotIcon,
   FileJsonIcon,
   FilesIcon,
-  LayoutDashboardIcon,
-  LogOutIcon,
-  SettingsIcon,
-  Trash2Icon,
+  HandCoinsIcon,
+  Layers3Icon,
+  PieChartIcon,
+  ScrollIcon,
+  SwatchBookIcon,
   UsersIcon,
 } from "lucide-react";
 
-import { Separator } from "../ui/separator";
 import { SideNav } from "./side-nav";
 
 export default function SideBar({
@@ -35,14 +38,10 @@ export default function SideBar({
           isCollapsed ? "h-16 px-2" : "md:justify-between md:px-4",
         )}
       >
-        <img
-          src="/svg/favicon.svg"
-          alt="Logo"
-          className="h-10 w-10"
-        />
+        <Logo />
       </Link>
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -50,43 +49,43 @@ export default function SideBar({
           {
             title: "Dashboard",
             link: "/dashboard",
-            icon: LayoutDashboardIcon,
-            variant: "default",
-          },
-          {
-            title: "Activity",
-            icon: ActivityIcon,
-            link: "/activity",
-            variant: "ghost",
+            icon: PieChartIcon,
+            variant: "secondary",
           },
           {
             title: "Users",
             icon: UsersIcon,
-            link: "/users",
+            link: "/dashboard/users",
             variant: "ghost",
           },
           {
             title: "Articles",
             icon: FileJsonIcon,
-            link: "/articles",
+            link: "/dashboard/articles",
             variant: "ghost",
           },
           {
-            title: "Archive",
+            title: "Categories",
+            icon: SwatchBookIcon,
+            link: "/dashboard/categories",
+            variant: "ghost",
+          },
+          {
+            title: "Activities",
+            icon: ActivityIcon,
+            link: "/dashboard/activities",
+            variant: "ghost",
+          },
+          {
+            title: "Archives",
             icon: ArchiveIcon,
-            link: "/archives",
-            variant: "ghost",
-          },
-          {
-            title: "Trash",
-            icon: Trash2Icon,
-            link: "/trash",
+            link: "/dashboard/archives",
             variant: "ghost",
           },
         ]}
       />
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
@@ -94,39 +93,45 @@ export default function SideBar({
           {
             title: "Reports",
             icon: FilesIcon,
-            link: "/reports",
+            link: "/dashboard/reports",
             variant: "ghost",
           },
           {
             title: "Notifications",
             icon: BellDotIcon,
-            link: "/notifications",
+            link: "/dashboard/notifications",
             variant: "ghost",
           },
           {
             title: "Updates",
             icon: AlertCircleIcon,
-            link: "/updates",
+            link: "/dashboard/updates",
             variant: "ghost",
           },
         ]}
       />
 
-      <Separator className="h-[0.03rem]" />
+      <Separator className="mx-auto h-[0.03rem] w-4/5" />
 
       <SideNav
         isCollapsed={isCollapsed}
         links={[
           {
-            title: "Settings",
-            icon: SettingsIcon,
-            link: "/settings",
+            title: "Infrastructures",
+            icon: Layers3Icon,
+            link: "/dashboard/infra",
             variant: "ghost",
           },
           {
-            title: "Sign Out",
-            icon: LogOutIcon,
-            link: "/sign-out",
+            title: "Documents",
+            icon: ScrollIcon,
+            link: "/docs",
+            variant: "ghost",
+          },
+          {
+            title: "Partnerships",
+            icon: HandCoinsIcon,
+            link: "/partners",
             variant: "ghost",
           },
         ]}

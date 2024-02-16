@@ -4,6 +4,8 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     HOSTNAME: z.string().min(1),
+    API_URL: z.string().url(),
+
     COOKIE_SECRET: z.string().min(1),
 
     NODE_ENV: z.enum(["production", "development", "preview", "stage"]),

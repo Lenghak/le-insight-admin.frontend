@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
@@ -13,6 +15,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 
+import { QueryClientProvider } from "@tanstack/react-query";
 import { HttpStatusCode } from "axios";
 import {
   PreventFlashOnWrongTheme,
@@ -21,13 +24,14 @@ import {
 } from "remix-themes";
 
 import ErrorPage from "./common/components/error/erorr.page";
+import { getQueryClient } from "./common/lib/query";
 import { cn } from "./common/lib/utils";
 import styles from "./styles/globals.css";
 import { themeSessionResolver } from "./theme.server";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Le-Insight Admin" },
+    { title: "Le-Insight | Admin" },
     {
       name: "description",
       content:
@@ -50,6 +54,20 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap",
   },
+  {
+    rel: "icon",
+    href: "/svg/logo-light.svg",
+    media: "(prefers-color-scheme: light)",
+    sizes: "any",
+    type: "image/svg+xml",
+  },
+  {
+    rel: "icon",
+    href: "/svg/logo-dark.svg",
+    media: "(prefers-color-scheme: dark)",
+    sizes: "any",
+    type: "image/svg+xml",
+  },
   { rel: "stylesheet", href: styles },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
@@ -67,19 +85,21 @@ export async function loader({ request }: LoaderFunctionArgs) {
 // `themeAction` is the action name that's used to change the theme in the session storage.
 export default function ThemedApp() {
   const data = useLoaderData<typeof loader>();
+  const [queryClient] = useState(getQueryClient());
   return (
     <ThemeProvider
       specifiedTheme={data.theme}
       themeAction="/action/set-theme"
     >
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
 
 export function App() {
   const data = useLoaderData<typeof loader>();
-
   const [theme] = useTheme();
 
   return (

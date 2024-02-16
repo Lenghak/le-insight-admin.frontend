@@ -22,7 +22,7 @@ export default function AuthLayout() {
               variant: "link",
             }),
             "absolute left-0 top-8 items-center gap-4 font-bold",
-            location.pathname === "/sign-in" ? "hidden" : "",
+            location.pathname === "/auth/sign-in" ? "hidden" : "",
           )}
         >
           <ChevronLeftIcon size={18} />
