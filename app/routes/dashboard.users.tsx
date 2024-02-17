@@ -5,13 +5,13 @@ import UsersTable from "@/modules/users/components/users-table";
 import DashboardTitle from "@/common/components/dashboard-title";
 import { Button } from "@/common/components/ui/button";
 
-import useGetUsers from "@/common/api/users/query/use-get-users";
+import getUsersList from "@/common/api/users/get-users-list";
+
+export async function loader() {
+  return await getUsersList();
+}
 
 export default function Users() {
-  const { data } = useGetUsers();
-
-  console.log(data);
-
   return (
     <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
       {/* Titles & Breadcrumps */}

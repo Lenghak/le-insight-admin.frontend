@@ -1,4 +1,4 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet, useRouteError } from "@remix-run/react";
 
 import DashboardHeader from "@/common/components/dashboard-header";
 import { SideBar } from "@/common/components/side-bar";
@@ -49,4 +49,10 @@ export default function DashboardLayout() {
       </main>
     </TooltipProvider>
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.log(error);
+  return "dashboard route error";
 }
