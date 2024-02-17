@@ -1,8 +1,12 @@
+import { Fragment } from "react";
+
 import { columns } from "@/modules/users/components/users-columns";
 import { UsersDataForm } from "@/modules/users/components/users-data-form";
 import UsersTable from "@/modules/users/components/users-table";
 
 import DashboardTitle from "@/common/components/dashboard-title";
+import ErrorSection from "@/common/components/error/error.section";
+import Logo from "@/common/components/logo";
 import { Button } from "@/common/components/ui/button";
 
 import getUsersList from "@/common/api/users/get-users-list";
@@ -13,7 +17,7 @@ export async function loader() {
 
 export default function Users() {
   return (
-    <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
+    <Fragment>
       {/* Titles & Breadcrumps */}
       <div className="flex w-full flex-row items-center justify-between">
         <DashboardTitle
@@ -30,11 +34,27 @@ export default function Users() {
       </div>
 
       {/* Tables */}
-
       <UsersTable
         columns={columns}
         data={[]}
       />
-    </section>
+    </Fragment>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <main className="flex h-full w-full items-center justify-center">
+      <Logo className="h-48 w-48 animate-pulse opacity-5 invert" />
+    </main>
+  );
+}
+
+export function ErrorBoundary() {
+  return (
+    <ErrorSection
+      title="Something went wrong!"
+      description="There was a technical problem on our end. Please try again."
+    />
   );
 }

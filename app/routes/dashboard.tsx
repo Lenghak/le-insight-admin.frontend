@@ -1,6 +1,7 @@
-import { Outlet, useRouteError } from "@remix-run/react";
+import { Outlet } from "@remix-run/react";
 
 import DashboardHeader from "@/common/components/dashboard-header";
+import ErrorSection from "@/common/components/error/error.section";
 import { SideBar } from "@/common/components/side-bar";
 import { Button } from "@/common/components/ui/button";
 import { TooltipProvider } from "@/common/components/ui/tooltip";
@@ -10,6 +11,13 @@ import { cn } from "@/common/lib/utils";
 import { $isCollapsed, setCollapsed } from "@/common/contexts/side-bar-store";
 import { useStore } from "@nanostores/react";
 import { MenuIcon } from "lucide-react";
+
+export function clientLoader() {
+  setCollapsed(JSON.parse(window.localStorage.getItem("side-bar") ?? "true"));
+  return $isCollapsed;
+}
+
+clientLoader.hydrate = true;
 
 export default function DashboardLayout() {
   const isCollapsed = useStore($isCollapsed);
@@ -44,7 +52,9 @@ export default function DashboardLayout() {
         />
 
         <section className="h-full w-full pb-4 pr-4">
-          <Outlet />
+          <section className="h-full w-full space-y-6 overflow-x-auto rounded-xl bg-background p-6">
+            <Outlet />
+          </section>
         </section>
       </main>
     </TooltipProvider>
@@ -52,7 +62,10 @@ export default function DashboardLayout() {
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError();
-  console.log(error);
-  return "dashboard route error";
+  return (
+    <ErrorSection
+      title="Something went wrong!"
+      description="There was a technical problem on our end. Please try again."
+    />
+  );
 }
