@@ -108,8 +108,8 @@ dependencies:
     specifier: ^0.8.0
     version: 0.8.0(typescript@5.3.3)(zod@3.22.4)
   '@tanstack/react-query':
-    specifier: ^5.20.5
-    version: 5.20.5(react@18.2.0)
+    specifier: ^5.21.2
+    version: 5.21.2(react@18.2.0)
   '@tanstack/react-table':
     specifier: ^8.12.0
     version: 8.12.0(react-dom@18.2.0)(react@18.2.0)
@@ -164,6 +164,9 @@ dependencies:
   react-resizable-panels:
     specifier: ^1.0.10
     version: 1.0.10(react-dom@18.2.0)(react@18.2.0)
+  remix-hook-form:
+    specifier: ^4.1.0
+    version: 4.1.0(@remix-run/react@2.6.0)(react-dom@18.2.0)(react-hook-form@7.50.1)(react@18.2.0)
   remix-themes:
     specifier: ^1.3.1
     version: 1.3.1(@remix-run/react@2.6.0)(@remix-run/server-runtime@2.6.0)
@@ -3076,16 +3079,16 @@ packages:
       - typescript
     dev: true
 
-  /@tanstack/query-core@5.20.5:
-    resolution: {integrity: sha512-T1W28gGgWn0A++tH3lxj3ZuUVZZorsiKcv+R50RwmPYz62YoDEkG4/aXHZELGkRp4DfrW07dyq2K5dvJ4Wl1aA==}
+  /@tanstack/query-core@5.21.2:
+    resolution: {integrity: sha512-jg7OcDG44oLT3uuGQQ9BM65ZBIdAq9xNZXPEk7Gr6w1oM1wo2/95H3dPDjLVs0yZKwrmE/ORUOC2Pyi1sp2fDA==}
     dev: false
 
-  /@tanstack/react-query@5.20.5(react@18.2.0):
-    resolution: {integrity: sha512-6MHwJ8G9cnOC/XKrwt56QMc91vN7hLlAQNUA0ubP7h9Jj3a/CmkUwT6ALdFbnVP+PsYdhW3WONa8WQ4VcTaSLQ==}
+  /@tanstack/react-query@5.21.2(react@18.2.0):
+    resolution: {integrity: sha512-/Vv1qTumNDDVA5EYk40kivHZ2kICs1w38GBLRvV6A/lrixUJR5bfqZMKqHA1S6ND3gR9hvSyAAYejBbjLrQnSA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.20.5
+      '@tanstack/query-core': 5.21.2
       react: 18.2.0
     dev: false
 
@@ -3389,7 +3392,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.9)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.4
       '@vanilla-extract/css': 1.14.1
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
@@ -7685,6 +7688,20 @@ packages:
       mdast-util-to-hast: 12.3.0
       unified: 10.1.2
     dev: true
+
+  /remix-hook-form@4.1.0(@remix-run/react@2.6.0)(react-dom@18.2.0)(react-hook-form@7.50.1)(react@18.2.0):
+    resolution: {integrity: sha512-+nl8xg9Nr/cXONcWWaUVB4TTWrZyTHZ6BOZLOCx+pJTbc716okeBcTQV34srVaSJ3Srx5dHv/2RgM79Qy2SVeA==}
+    peerDependencies:
+      '@remix-run/react': ^2.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-hook-form: ^7.48.2
+    dependencies:
+      '@remix-run/react': 2.6.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-hook-form: 7.50.1(react@18.2.0)
+    dev: false
 
   /remix-themes@1.3.1(@remix-run/react@2.6.0)(@remix-run/server-runtime@2.6.0):
     resolution: {integrity: sha512-RNw2nMG7c8Ei6KLjr5dUwy++4ga3KFSmedzqPk+de+f3JZhPbfH+HaEWSu2nPpuIMBlNldrUoCt4GN7rC5u5uw==}

@@ -102,7 +102,7 @@
 
 /* Handle */
 *::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
+  background: hsl(var(--card));
   border: 0.25rem solid transparent;
   background-clip: padding-box;
   @apply rounded-full;
@@ -110,7 +110,6 @@
 
 /* Handle on hover */
 *::-webkit-scrollbar-thumb :hover {
-  background: hsl(var(--scroll-bar));
   border: 0.25rem solid transparent;
   background-clip: padding-box;
 }

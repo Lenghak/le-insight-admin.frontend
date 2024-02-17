@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 
+import { defer } from "@remix-run/node";
+
 import { columns } from "@/modules/users/components/users-columns";
 import { UsersDataForm } from "@/modules/users/components/users-data-form";
 import UsersTable from "@/modules/users/components/users-table";
@@ -12,7 +14,9 @@ import { Button } from "@/common/components/ui/button";
 import getUsersList from "@/common/api/users/get-users-list";
 
 export async function loader() {
-  return await getUsersList();
+  const users = getUsersList();
+
+  return defer({ users });
 }
 
 export default function Users() {

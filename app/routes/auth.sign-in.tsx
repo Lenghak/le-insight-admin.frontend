@@ -111,7 +111,8 @@ export default function SignIn() {
 
           <div className="flex w-full items-center justify-end">
             <Link
-              to={"/forgot-password"}
+              prefetch="intent"
+              to={"/auth/forgot-password"}
               className={cn(
                 buttonVariants({
                   variant: "link",
