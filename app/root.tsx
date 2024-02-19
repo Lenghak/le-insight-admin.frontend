@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
@@ -15,7 +13,6 @@ import {
   useRouteError,
 } from "@remix-run/react";
 
-import { QueryClientProvider } from "@tanstack/react-query";
 import { HttpStatusCode } from "axios";
 import {
   PreventFlashOnWrongTheme,
@@ -24,7 +21,6 @@ import {
 } from "remix-themes";
 
 import ErrorPage from "./common/components/error/erorr.page";
-import { getQueryClient } from "./common/lib/query";
 import { cn } from "./common/lib/utils";
 import styles from "./styles/globals.css";
 import { themeSessionResolver } from "./theme.server";
@@ -85,15 +81,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
 // `themeAction` is the action name that's used to change the theme in the session storage.
 export default function ThemedApp() {
   const data = useLoaderData<typeof loader>();
-  const [queryClient] = useState(getQueryClient());
   return (
     <ThemeProvider
       specifiedTheme={data.theme}
       themeAction="/action/set-theme"
     >
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <App />
     </ThemeProvider>
   );
 }

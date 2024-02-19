@@ -15,7 +15,6 @@ import getUsersList from "@/common/api/users/get-users-list";
 
 export async function loader() {
   const users = getUsersList();
-
   return defer({ users });
 }
 
