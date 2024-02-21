@@ -1,17 +1,19 @@
 {
   "include": [
-    "remix.env.d.ts",
+    "env.d.ts",
     ".eslintrc.cjs",
     "*.config.js",
     "**/*.ts",
     "**/*.tsx"
   ],
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "target": "ES2022",
     "strict": true,
