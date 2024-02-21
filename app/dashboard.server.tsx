@@ -1,12 +1,10 @@
 import { createCookie } from "@remix-run/node";
 
-import { env } from "@/core/env";
-
 export const sidebarCookie = createCookie("side-bar", {
   path: "/dashboard",
   httpOnly: true,
-  domain: env.HOSTNAME,
+  domain: process.env.HOSTNAME,
   sameSite: "lax",
   secure: true,
-  secrets: [env.COOKIE_SECRET],
+  secrets: [process.env.COOKIE_SECRET ?? ""],
 });

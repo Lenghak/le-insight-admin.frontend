@@ -2,8 +2,6 @@ import { createCookieSessionStorage } from "@remix-run/node";
 
 import { createThemeSessionResolver } from "remix-themes";
 
-import { env } from "./core/env";
-
 // You can default to 'development' if process.env.NODE_ENV is not set
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -13,9 +11,9 @@ const sessionStorage = createCookieSessionStorage({
     path: "/",
     httpOnly: true,
     sameSite: "lax",
-    secrets: [env.COOKIE_SECRET],
+    secrets: [process.env.COOKIE_SECRET ?? ""],
     // Set domain and secure only if in production
-    ...(isProduction ? { domain: env.HOSTNAME, secure: true } : {}),
+    ...(isProduction ? { domain: process.env.HOSTNAME, secure: true } : {}),
   },
 });
 

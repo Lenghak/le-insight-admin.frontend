@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { Dialog, DialogContent } from "@/common/components/ui/dialog";
