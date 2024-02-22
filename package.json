@@ -81,8 +81,6 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@vanilla-extract/vite-plugin": "^4.0.4",
-    "@vercel/remix": "2.7.2-preset.1",
-    "@vercel/remix-run-dev": "2.7.2-preset.1",
     "autoprefixer": "^10.4.17",
     "dependency-cruiser": "^16.2.1",
     "eslint": "^8.56.0",
