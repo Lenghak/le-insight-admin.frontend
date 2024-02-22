@@ -1,11 +1,9 @@
-export default function Index() {
-  return (
-    <section className="h-full w-full rounded-xl bg-background">
-      {/* Dashboard Card */}
+import { redirect } from "@remix-run/node";
 
-      {/* Dashboard Stats */}
+export function loader() {
+  return redirect("/dashboard/users");
+}
 
-      {/* Dashboard Logs  */}
-    </section>
-  );
+export default function Dashboard() {
+  return;
 }

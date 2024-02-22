@@ -16,7 +16,7 @@ export default function AuthLayout() {
     <main className="container flex h-screen w-full flex-row items-center">
       <section className="relative flex h-full w-full flex-col items-center justify-center">
         <Link
-          to={"/sign-in"}
+          to={"/auth/sign-in"}
           className={cn(
             buttonVariants({
               variant: "link",

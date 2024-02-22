@@ -14,10 +14,11 @@ import { type LucideIcon } from "lucide-react";
 interface SideNavProps {
   isCollapsed: boolean;
   links: {
+    isDisabled: boolean;
     title: string;
     label?: string;
     icon: LucideIcon;
-    variant: "secondary" | "ghost";
+    variant: "secondary" | "ghost" | "muted";
     link: string;
   }[];
 }
@@ -30,7 +31,7 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
       data-collapsed={isCollapsed}
       className="group flex flex-col gap-4 py-4 data-[collapsed=true]:py-4"
     >
-      <nav className="grid gap-3 px-4 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-4 max-md:justify-center">
+      <nav className="grid gap-3 px-4 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-4 aria-disabled:!text-muted-foreground max-md:justify-center">
         {links.map((link, index) => {
           link.variant =
             location.pathname === link.link ? "secondary" : "ghost";
@@ -42,15 +43,14 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
             >
               <TooltipTrigger asChild>
                 <Link
+                  aria-disabled={link.isDisabled}
                   to={link.link}
                   className={cn(
                     buttonVariants({
                       variant: link.variant,
                       size: isCollapsed ? "icon" : "default",
                     }),
-                    "h-10 w-10",
-                    link.variant === "secondary" &&
-                      "dark:bg-secondary dark:text-secondary-foreground",
+                    "h-10 w-10 aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed aria-disabled:text-muted-foreground aria-disabled:hover:text-muted-foreground",
                   )}
                 >
                   <link.icon
@@ -76,6 +76,7 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
             </Tooltip>
           ) : (
             <Link
+              aria-disabled={link.isDisabled}
               key={index}
               to={link.link}
               className={cn(
@@ -83,14 +84,13 @@ export function SideNav({ links, isCollapsed }: SideNavProps) {
                   variant: link.variant,
                   size: isCollapsed ? "icon" : "default",
                 }),
-                link.variant === "secondary" &&
-                  "font-bold dark:text-secondary-foreground",
-                "gap-4 px-4 hover:bg-secondary hover:text-secondary-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
+                link.variant === "secondary" && "font-bold",
+                "gap-4 px-4 aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed aria-disabled:text-muted-foreground aria-disabled:hover:text-muted-foreground max-md:h-10 max-md:w-10 md:justify-start md:px-4",
               )}
             >
               <link.icon
                 className={cn(
-                  "h-4 w-4",
+                  "h-4 min-h-4 w-4 min-w-4",
                   link.variant === "secondary" && "stroke-[3]",
                 )}
               />

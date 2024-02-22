@@ -1,11 +1,7 @@
-import { useState } from "react";
-
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
   isRouteErrorResponse,
   Links,
-  LiveReload,
   Meta,
   type MetaFunction,
   Outlet,
@@ -15,7 +11,7 @@ import {
   useRouteError,
 } from "@remix-run/react";
 
-import { QueryClientProvider } from "@tanstack/react-query";
+import styles from "@/styles/globals.css?url";
 import { HttpStatusCode } from "axios";
 import {
   PreventFlashOnWrongTheme,
@@ -24,9 +20,7 @@ import {
 } from "remix-themes";
 
 import ErrorPage from "./common/components/error/erorr.page";
-import { getQueryClient } from "./common/lib/query";
 import { cn } from "./common/lib/utils";
-import styles from "./styles/globals.css";
 import { themeSessionResolver } from "./theme.server";
 
 export const meta: MetaFunction = () => {
@@ -54,6 +48,7 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap",
   },
+  { rel: "stylesheet", href: styles },
   {
     rel: "icon",
     href: "/svg/logo-light.svg",
@@ -68,8 +63,6 @@ export const links: LinksFunction = () => [
     sizes: "any",
     type: "image/svg+xml",
   },
-  { rel: "stylesheet", href: styles },
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
 // Return the theme from the session storage using the loader
@@ -85,15 +78,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
 // `themeAction` is the action name that's used to change the theme in the session storage.
 export default function ThemedApp() {
   const data = useLoaderData<typeof loader>();
-  const [queryClient] = useState(getQueryClient());
   return (
     <ThemeProvider
       specifiedTheme={data.theme}
       themeAction="/action/set-theme"
     >
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <App />
     </ThemeProvider>
   );
 }
@@ -122,10 +112,8 @@ export function App() {
       </head>
       <body>
         <Outlet />
-
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
@@ -173,7 +161,6 @@ export function ErrorBoundary() {
         )}
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
