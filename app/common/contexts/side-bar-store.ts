@@ -1,5 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
-import { action, onMount } from "nanostores";
+import { onMount } from "nanostores";
 
 export const $isCollapsed = persistentAtom<boolean>("side-bar", true, {
   listen: true,
@@ -7,10 +7,6 @@ export const $isCollapsed = persistentAtom<boolean>("side-bar", true, {
   decode: JSON.parse,
 });
 
-export const setCollapsed = action(
-  $isCollapsed,
-  "setCollapsed",
-  (_, value: boolean) => $isCollapsed.set(value),
-);
+export const setCollapsed = (value: boolean) => $isCollapsed.set(value);
 
 onMount($isCollapsed, () => setCollapsed($isCollapsed.get()));
